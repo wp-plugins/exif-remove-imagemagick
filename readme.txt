@@ -35,7 +35,7 @@ Exif-Remove settings menu. Thanks.
 
 == Installation ==
 
-1. Upload the directory 'exif-remove' to the '/wp-content/plugins/' directory
+1. Upload the directory 'exif-remove-imagemagick' to the '/wp-content/plugins/' directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Make your settings through the 'Settings' menu in WordPress
 4. Upload images while writing posts and pages.
@@ -46,7 +46,7 @@ Exif-Remove settings menu. Thanks.
 = How can I check whether this plugin is installed correctly or not? =
 
 This Plugin is working transparently within your WordPress blog.
-There should be a settings menu called "Exif-Remove-ImageMagick" where you are able
+There should be a settings menu called "EXIF Remove IM" where you are able
 to (de)activate the plugin. The upload dialogs (in articles/pages) will
 not be modified by this plugin, so you won't see any difference.
 You may also check your images with http://www.exif-viewer.de/ .
