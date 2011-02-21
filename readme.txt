@@ -1,5 +1,6 @@
 === Exif-Remove-ImageMagick ===
-Contributors: RichieB
+Author: RichieB
+Contributors: CupRacer, orangelab
 Stable tag: 1.0
 Tags: image, images, picture, imagemagick, exif, clean, remove
 Requires at least: 2.9
