@@ -27,8 +27,6 @@ should not be used for illegal activity like copyright violations.
 You are allowed to use this service for legal activity only, 
 this includes that you must have the explicit permission 
 from the holder of rights to clean a file with this plugin!
-As of now, to prevent abuse, the eventually existing 
-copyright information will be kept inside the cleaned image.
 To disable this plugin temporarily, just deactivate it within the
 Exif-Remove settings menu. Thanks.
 
