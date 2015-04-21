@@ -1,9 +1,9 @@
 === Exif-Remove-ImageMagick ===
 Contributors: RichieB, CupRacer, orangelab
-Stable tag: 1.0
+Stable tag: 1.1
 Tags: image, images, picture, imagemagick, exif, clean, remove
 Requires at least: 2.9
-Tested up to: 3.1-RC2
+Tested up to: 3.6.1
 
 
 This plugin removes Exif data from uploaded images automatically.
@@ -27,6 +27,8 @@ should not be used for illegal activity like copyright violations.
 You are allowed to use this service for legal activity only, 
 this includes that you must have the explicit permission 
 from the holder of rights to clean a file with this plugin!
+As of now, to prevent abuse, the eventually existing 
+copyright information will be kept inside the cleaned image.
 To disable this plugin temporarily, just deactivate it within the
 Exif-Remove settings menu. Thanks.
 
@@ -57,11 +59,18 @@ None.
 
 == Changelog ==
 
+= 1.1 =
+* Updated for Wordpress 3.6.1
+
 = 1.0 =
 * This is the initial version.
 
 == Upgrade Notice ==
 
+= 1.1 =
+None.
+
 = 1.0 =
 None.
+
 

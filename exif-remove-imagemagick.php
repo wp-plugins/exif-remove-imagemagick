@@ -4,7 +4,7 @@ Plugin Name: EXIF-Remove-ImageMagick
 Plugin URI: http://www.vdberg.org/~richard/exif-remove-imagemagick.html
 Description: Automatically remove exif data after uploading JPG files using ImageMagick
 Author: Richard van den Berg
-Version: 1.0
+Version: 1.1
 Author URI: http://www.vdberg.org/~richard/
 Text Domain: exif-remove-imagemagick
 
@@ -65,7 +65,8 @@ function eri_init() {
 		add_action('wp_handle_upload', 'eri_exifremoveupload_clean'); // apply our modifications
 	}
 	if (is_admin()) {
-		add_action( 'admin_menu', 'eri_admin_menu' );
+		add_filter('plugin_action_links', 'eri_filter_plugin_actions', 10, 2 );
+		add_action('admin_menu', 'eri_admin_menu' );
 	}
 }
 
@@ -210,7 +211,7 @@ function eri_im_php_valid() {
 	return class_exists('Imagick');
 }
 
-// Resize file using PHP Imagick class
+// Strip file using PHP Imagick class
 function eri_im_php_remove_exif($file) {
 	$im = new Imagick($file);
 	if (!$im->valid())
@@ -315,16 +316,6 @@ function eri_admin_menu() {
 	$page = add_options_page('EXIF Remove using ImageMagick', 'EXIF Remove IM', 8, 'exif-remove-imagemagick', 'eri_option_page');
 }
 
-function eri_filter_plugin_actions($links, $file) {
-	if($file == plugin_basename(__FILE__)) {
-		$settings_link = "<a href=\"options-general.php?page=exif-remove-imagemagick\">"
-			. __('Settings', 'exif-remove-imagemagick') . '</a>';
-		array_unshift( $links, $settings_link ); // before other links
-	}
-
-	return $links;
-}
-
 function eri_option_admin_images_url() {
 	return get_bloginfo('wpurl') . '/wp-admin/images/';
 }
@@ -341,6 +332,18 @@ function eri_option_display($display = true, $echo = true) {
 		echo $s;
 	return $s;
 }
+
+/* Add settings to plugin action links */
+function eri_filter_plugin_actions($links, $file) {
+	if($file == plugin_basename(__FILE__)) {
+		$settings_link = "<a href=\"options-general.php?page=exif-remove-imagemagick\">"
+			. __('Settings', 'exif-remove-imagemagick') . '</a>';
+		array_unshift( $links, $settings_link ); // before other links
+	}
+
+	return $links;
+}
+
 
 function eri_option_page() {
 	global $eri_available_modes;
@@ -453,7 +456,6 @@ function eri_option_page() {
 		<img id="cli_path_no" class="cli_path_icon" src="<?php echo eri_option_status_icon(false); ?>" alt="<?php _e('Command not found', 'qp-qie'); ?>"  <?php eri_option_display(!$cli_path_ok); ?> />
 		<img id="cli_path_progress" src="<?php echo eri_option_admin_images_url(); ?>wpspin_light.gif" alt="<?php _e('Testing command...', 'qp-qie'); ?>"  <?php eri_option_display(false); ?> />
 		<input id="cli_path" type="text" name="cli_path" size="<?php echo max(30, strlen($cli_path) + 5); ?>" value="<?php echo $cli_path; ?>" />
-		<input type="button" name="eri_cli_path_test" id="eri_cli_path_test" value="<?php _e('Test path', 'exif-remove-imagemagick'); ?>" class="button-secondary" />
 	      </td>
 	    </tr>
 	    <tr>
